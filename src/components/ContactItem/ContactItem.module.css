@@ -1,0 +1,20 @@
+.text {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+
+}
+
+.button {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px;
+    height: 40px;
+    background-color: rgba(244, 218, 244, 0.788);
+    border-radius: 5px;
+    border: 2px solid rgba(51, 19, 51, 0.788);
+}
+
+.button:hover, .button:focus {
+    scale: 1.02;
+}

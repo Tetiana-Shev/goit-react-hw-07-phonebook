@@ -1,0 +1,40 @@
+.contactForm {
+    padding: 10px 30px 30px 30px;
+    border: 2px solid rgba(51, 19, 51, 0.788);
+    border-radius: 5px;
+    background-color: rgba(240, 143, 240, 0.788);
+}
+
+.label {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    
+}
+
+.input {
+    width: 415px;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+    border: 2px solid rgba(51, 19, 51, 0.788);
+}
+
+.input:hover, .input:focus {
+    scale: 1.02;
+}
+
+.button {
+    font-size: 20px;
+    padding: 10px;
+    background-color: rgba(244, 218, 244, 0.788);
+    border-radius: 5px;
+    border: 2px solid rgba(51, 19, 51, 0.788);
+}
+
+.button:hover, .button:focus {
+    scale: 1.02;
+}
