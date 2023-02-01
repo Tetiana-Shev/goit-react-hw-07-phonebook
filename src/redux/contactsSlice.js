@@ -1,24 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
-    items: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    items: [],
+    isLoading: false,
+    error: null,
   },
-  reducers: {
-    addContact(state, { payload }) {
+  extraReducers: builder => {
+    builder.addCase(fetchContacts.fulfilled, (state, { payload }) => {
+      state.items = payload;
+      state.isLoading = false;
+    });
+    builder.addCase(fetchContacts.pending, state => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchContacts.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
+    });
+
+    builder.addCase(addContact.fulfilled, (state, { payload }) => {
       state.items.push(payload);
-    },
-    deleteContact(state, { payload }) {
+      state.isLoading = false;
+    });
+    builder.addCase(addContact.pending, state => {
+      state.isLoading = true;
+    });
+    builder.addCase(addContact.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
+    });
+
+    builder.addCase(deleteContact.fulfilled, (state, { payload }) => {
       state.items = state.items.filter(({ id }) => id !== payload);
-    },
+      state.isLoading = false;
+    });
+    builder.addCase(deleteContact.pending, state => {
+      state.isLoading = true;
+    });
+    builder.addCase(deleteContact.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
+    });
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
 export default contactsSlice;
